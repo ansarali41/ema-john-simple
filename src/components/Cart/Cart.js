@@ -2,12 +2,12 @@ import React from 'react';
 
 const cart = (props) => {
     const cart = props.cart;
-    console.log(cart);
-    // const total = cart.reduce((total, prd) => total + prd.price, 0)
+    // console.log(cart);
+    // const total = cart.reduce((total, prd) => total + prd.price, 0);
     let total = 0;
     for (let i = 0; i < cart.length; i++) {
         const product = cart[i];
-        total = total + product.price;
+        total = total + product.price*product.quantity;
     }
 
     let shipping = 0;
@@ -22,18 +22,22 @@ const cart = (props) => {
     }
 
     const tax = (total / 1.5).toFixed(2);
-    const grandTotal =  (total + shipping + Number(tax)).toFixed(2);
+    const grandTotal = (total + shipping + Number(tax)).toFixed(2);
 
-return (
-    <div>
-        <h4>Order Summery: </h4>
-<h5>Product Price:{total}</h5>
-        <p>Items ordered: {cart.length}</p>
-        <p> <small>Shipping Cost: {shipping}$</small></p>
-        <p><small>Tax+VAT:{tax}</small></p>
-<p>Total Price: ${grandTotal}</p>
-    </div>
-);
+    return (
+        <div>
+            <h4 className="text-success">Order Summery: </h4>
+            <h5>Product Price:{total.toFixed(2)}</h5>
+            <p>Items ordered: {cart.length}</p>
+            <p> <small>Shipping Cost: {shipping}$</small></p>
+            <p><small>Tax+VAT:{tax}</small></p>
+            <p>Total Price: ${grandTotal}</p>
+            <br/>
+            {
+                props.children
+            }
+        </div>
+    );
 };
 
 export default cart;
