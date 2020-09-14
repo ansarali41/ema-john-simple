@@ -35,7 +35,7 @@ function App(props) {
             <Review></Review>
           </Route>
 
-          <PrivateRoute path="/inventory">
+          <PrivateRoute path="/orders">
             <Inventory></Inventory>
           </PrivateRoute>
 
