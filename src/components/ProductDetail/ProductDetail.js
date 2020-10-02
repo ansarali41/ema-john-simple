@@ -7,7 +7,7 @@ const ProductDetail = () => {
     const { productKey } = useParams();
     const [product,setProduct] = useState({})
     useEffect(() => {
-        fetch('http://localhost:5000/product/'+productKey)
+        fetch('https://serene-sea-11369.herokuapp.com/product/'+productKey)
         .then(response => response.json())
         .then(data => setProduct(data))
     },[productKey])

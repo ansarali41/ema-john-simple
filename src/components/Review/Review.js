@@ -27,7 +27,7 @@ const Review = () => {
         const savedCart = getDatabaseCart();//savedCart{key: values} ex,{54afe:1}
         const productKeys = Object.keys(savedCart);//collecting property name
 
-        fetch('http://localhost:5000/productsByKeys',{
+        fetch('https://serene-sea-11369.herokuapp.com/productsByKeys',{
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(productKeys)
